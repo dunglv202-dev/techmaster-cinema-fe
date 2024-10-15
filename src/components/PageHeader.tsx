@@ -1,6 +1,8 @@
 import CGVLogo from '@/assets/cgvlogo.png'
-import { Menu, MenuProps, Space } from 'antd'
+import { Menu, MenuProps, Space, Typography } from 'antd'
 import { Link, useLocation } from 'react-router-dom'
+import { IconUser } from '@tabler/icons-react'
+import styles from './PageHeader.module.css'
 
 interface MenuItem {
   path: string
@@ -51,10 +53,20 @@ const PageHeader = () => {
     <header
       style={{
         paddingBlock: 20,
+        maxWidth: 'var(--app-max-width)',
+        margin: '0 auto',
       }}
     >
-      <Space>
-        <img src={CGVLogo} alt='Logo' />
+      <div style={{ marginBottom: 20, display: 'flex', justifyContent: 'flex-end' }}>
+        <Link to='/login' className={styles['header_link']}>
+          <Space>
+            <IconUser size={22} style={{ paddingTop: 6 }} />
+            <Typography.Text style={{ color: 'inherit' }}>Đăng nhập</Typography.Text>
+          </Space>
+        </Link>
+      </div>
+      <Space style={{ columnGap: 40 }}>
+        <img src={CGVLogo} alt='Logo' style={{ height: 48 }} />
         <nav>
           <Menu
             mode='horizontal'
