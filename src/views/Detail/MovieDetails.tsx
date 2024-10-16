@@ -19,7 +19,7 @@ const MovieDetails = () => {
   }, [id])
 
   return (
-    <Space direction='vertical' style={{ gap: 20 }}>
+    <Space direction='vertical' style={{ gap: 20, width: '100%' }}>
       <Flex align='start' style={{ gap: 30 }}>
         <Image src={movie?.thumbnail} width={200} />
         <Space direction='vertical' style={{ flexGrow: 1 }}>
@@ -28,7 +28,7 @@ const MovieDetails = () => {
           </Typography.Title>
           <Divider style={{ marginBlock: 0 }} dashed />
           {movie?.director && <DescriptorMeta label='Đạo diễn' content={movie?.director} />}
-          {movie?.actors && (
+          {movie?.actors && movie.actors.length > 0 && (
             <DescriptorMeta label='Diễn viên' content={movie?.actors?.join(', ')} />
           )}
           <DescriptorMeta label='Thể loại' content={movie?.categories.join(', ')} />
