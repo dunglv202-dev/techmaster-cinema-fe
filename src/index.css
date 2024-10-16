@@ -3,7 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  --app-max-width: 800px;
+  --app-max-width: 1024px;
   --app-color-primary: #ed1d1c;
   --app-color-secondary: #fdf7dd;
 }
@@ -11,4 +11,10 @@
 body {
   padding: 0;
   margin: 0;
+  padding: 20px;
+}
+
+a {
+  font-size: 14px;
+  color: #1677ff;
 }

@@ -1,8 +1,9 @@
 import CGVLogo from '@/assets/cgvlogo.png'
-import { Menu, MenuProps, Space, Typography } from 'antd'
+import BuyNow from '@/assets/mua_ve_ngay.png'
+import { IconTicket, IconUser } from '@tabler/icons-react'
+import { Flex, Menu, MenuProps } from 'antd'
 import { Link, useLocation } from 'react-router-dom'
-import { IconUser } from '@tabler/icons-react'
-import styles from './PageHeader.module.css'
+import HeaderLink from './HeaderLink'
 
 interface MenuItem {
   path: string
@@ -43,6 +44,8 @@ const makeMenuItem = (item: MenuItem): Required<MenuProps>['items'][number] => {
   }
 }
 
+const items = navItems.map(makeMenuItem)
+
 const PageHeader = () => {
   const location = useLocation()
   const activeMenu = navItems
@@ -50,31 +53,19 @@ const PageHeader = () => {
     .find((key) => location.pathname.startsWith(key))
 
   return (
-    <header
-      style={{
-        paddingBlock: 20,
-        maxWidth: 'var(--app-max-width)',
-        margin: '0 auto',
-      }}
-    >
-      <div style={{ marginBottom: 20, display: 'flex', justifyContent: 'flex-end' }}>
-        <Link to='/login' className={styles['header_link']}>
-          <Space>
-            <IconUser size={22} style={{ paddingTop: 6 }} />
-            <Typography.Text style={{ color: 'inherit' }}>Đăng nhập</Typography.Text>
-          </Space>
-        </Link>
-      </div>
-      <Space style={{ columnGap: 40 }}>
-        <img src={CGVLogo} alt='Logo' style={{ height: 48 }} />
+    <header style={{ maxWidth: 'var(--app-max-width)', margin: '0 auto' }}>
+      <Flex justify='flex-end' gap={20} style={{ paddingTop: 20 }}>
+        <HeaderLink to='/me/tickets' label='Vé của tôi' icon={<IconTicket />} />
+        <HeaderLink to='/login' label='Đăng nhập' icon={<IconUser />} />
+      </Flex>
+      <Flex gap={20} align='center' style={{ paddingBlock: 30 }}>
+        <img src={CGVLogo} alt='logo' style={{ height: 48 }} />
         <nav>
-          <Menu
-            mode='horizontal'
-            defaultSelectedKeys={activeMenu ? [activeMenu] : ['/dashboard']}
-            items={navItems.map(makeMenuItem)}
-          />
+          <Menu items={items} mode='horizontal' activeKey={activeMenu} />
         </nav>
-      </Space>
+        <div style={{ flexGrow: 1 }}></div>
+        <img src={BuyNow} alt='buy now' style={{ height: 56 }} />
+      </Flex>
     </header>
   )
 }

@@ -1,12 +1,12 @@
-import PageFooter from '@/components/PageFooter'
-import PageHeader from '@/components/PageHeader'
+import PageFooter from '@/components/PageFooter/PageFooter'
+import PageHeader from '@/components/PageHeader/PageHeader'
 import { Outlet } from 'react-router-dom'
 
 const DefaultLayout = () => {
   return (
     <>
       <PageHeader />
-      <main>
+      <main style={{ maxWidth: 'var(--app-max-width)', margin: '0 auto' }}>
         <Outlet />
       </main>
       <PageFooter />
