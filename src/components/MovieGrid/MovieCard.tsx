@@ -1,7 +1,7 @@
 import { Movie } from '@/models/movie'
 import { Card, Space, Typography } from 'antd'
-import MovieCardMeta from './MovieCardMeta'
 import { Link } from 'react-router-dom'
+import DescriptorMeta from '../DescriptorMeta'
 
 interface MovieCardProp {
   movie: Movie
@@ -28,8 +28,8 @@ const MovieCard = ({ movie }: MovieCardProp) => {
             {movie.name.toUpperCase()}
           </Typography.Text>
         </Link>
-        <MovieCardMeta label='Thể loại' content={movie.categories.join(', ')} />
-        <MovieCardMeta label='Thời lượng' content={`${movie.durationInMinutes} phút`} />
+        <DescriptorMeta label='Thể loại' content={movie.categories.join(', ')} />
+        <DescriptorMeta label='Thời lượng' content={`${movie.durationInMinutes} phút`} />
       </Space>
     </Card>
   )

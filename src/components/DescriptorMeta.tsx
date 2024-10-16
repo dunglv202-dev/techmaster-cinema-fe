@@ -1,17 +1,17 @@
 import { Space, Typography } from 'antd'
 
-interface MovieCardMetaProp {
+interface DescriptorMetaProp {
   label: string
-  content: string
+  content?: string
 }
 
-const MovieCardMeta = ({ label, content }: MovieCardMetaProp) => {
+const DescriptorMeta = ({ label, content }: DescriptorMetaProp) => {
   return (
-    <Space>
+    <Space style={{ display: 'flex' }}>
       <Typography.Text style={{ fontWeight: 'bold' }}>{label}:</Typography.Text>
       <Typography.Paragraph style={{ marginBottom: 0 }}>{content}</Typography.Paragraph>
     </Space>
   )
 }
 
-export default MovieCardMeta
+export default DescriptorMeta

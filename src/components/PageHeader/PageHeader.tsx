@@ -55,11 +55,13 @@ const PageHeader = () => {
   return (
     <header style={{ maxWidth: 'var(--app-max-width)', margin: '0 auto' }}>
       <Flex justify='flex-end' gap={20} style={{ paddingTop: 20 }}>
-        <HeaderLink to='/me/tickets' label='Vé của tôi' icon={<IconTicket />} />
-        <HeaderLink to='/login' label='Đăng nhập' icon={<IconUser />} />
+        <HeaderLink to='/me/tickets' label='Vé của tôi' icon={<IconTicket size={18} />} />
+        <HeaderLink to='/login' label='Đăng nhập' icon={<IconUser size={18} />} />
       </Flex>
       <Flex gap={20} align='center' style={{ paddingBlock: 30 }}>
-        <img src={CGVLogo} alt='logo' style={{ height: 48 }} />
+        <Link to='/'>
+          <img src={CGVLogo} alt='logo' style={{ height: 48 }} />
+        </Link>
         <nav>
           <Menu items={items} mode='horizontal' activeKey={activeMenu} />
         </nav>

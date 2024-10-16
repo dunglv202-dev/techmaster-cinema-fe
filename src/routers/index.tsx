@@ -1,15 +1,19 @@
 import DefaultLayout from '@/layouts/DefaultLayout'
+import MovieDetails from '@/views/Detail/MovieDetails'
 import HomePage from '@/views/Home/Home'
 import { createBrowserRouter } from 'react-router-dom'
 
 export const router = createBrowserRouter([
   {
-    path: '/',
     element: <DefaultLayout />,
     children: [
       {
-        path: '',
+        path: '/',
         element: <HomePage />,
+      },
+      {
+        path: '/movies/:id',
+        element: <MovieDetails />,
       },
     ],
   },
