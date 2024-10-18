@@ -48,7 +48,7 @@ const Booking = () => {
         <Space>
           <Typography.Title level={3} style={{ margin: 0, fontSize: 15 }}>
             {selectedSeats.length > 0
-              ? `Tổng tiền: ${selectedSeats.length * 75000}đ`
+              ? `Tổng tiền: ${selectedSeats.map((s) => s!.price).reduce((acc, sum) => acc + sum)}đ`
               : 'Vui lòng chọn ghế'}
           </Typography.Title>
         </Space>
