@@ -7,7 +7,7 @@ import { Seat } from '@/models/seat'
 import { Button, Divider, Image, message, Space, Typography } from 'antd'
 import moment from 'moment'
 import DescriptorMeta from '@/components/DescriptorMeta'
-import { bookTicket } from '@/services/ticket-service'
+import { bookTicket } from '@/services/booking-service'
 
 const Booking = () => {
   const { id: scheduleId } = useParams()

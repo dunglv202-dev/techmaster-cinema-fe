@@ -1,7 +1,7 @@
 import { Space, Typography } from 'antd'
 import { useEffect, useState } from 'react'
 import TicketBooking from './TicketBooking'
-import { getMyBookings } from '@/services/ticket-service'
+import { getMyBookings } from '@/services/booking-service'
 import { Booking } from '@/models/booking'
 
 const MyTicket = () => {

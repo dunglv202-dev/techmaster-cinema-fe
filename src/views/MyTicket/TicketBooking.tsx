@@ -46,7 +46,9 @@ const TicketBooking = ({ booking, onExpired }: TicketBookingProps) => {
                 <Timer deadline={booking.paymentDeadline} onExpired={onExpired} />
               </Typography.Text>
             </div>
-            <Button type='primary'>Thanh toán ngay</Button>
+            <Button href={`/api/bookings/${booking.id}/pay`} type='primary'>
+              Thanh toán ngay
+            </Button>
             <Button style={{ width: '100%' }} type='dashed'>
               Hủy
             </Button>
