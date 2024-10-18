@@ -1,4 +1,5 @@
 import DefaultLayout from '@/layouts/DefaultLayout'
+import Booking from '@/views/Booking/Booking'
 import MovieDetails from '@/views/Detail/MovieDetails'
 import HomePage from '@/views/Home/Home'
 import { createBrowserRouter } from 'react-router-dom'
@@ -14,6 +15,10 @@ export const router = createBrowserRouter([
       {
         path: '/movies/:id',
         element: <MovieDetails />,
+      },
+      {
+        path: '/booking/:id',
+        element: <Booking />,
       },
     ],
   },

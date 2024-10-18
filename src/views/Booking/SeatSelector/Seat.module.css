@@ -1,0 +1,51 @@
+.seat {
+  width: 25px;
+  height: 25px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.seat.small {
+  width: 18px;
+  height: 18px;
+}
+
+.seat:not(.none) {
+  cursor: pointer;
+}
+
+.seat.standard {
+  border-color: var(--app-color-primary);
+}
+
+.seat.vip {
+  border-color: var(--app-color-secondary);
+}
+
+.seat.occupied,
+.seat.not_available {
+  background-color: gainsboro;
+  border-color: gainsboro;
+  cursor: not-allowed;
+}
+
+.seat.not_available::after {
+  content: 'X';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seat.selected {
+  background-color: var(--app-color-primary);
+  border-color: var(--app-color-primary);
+  color: white;
+}
