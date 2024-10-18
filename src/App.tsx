@@ -4,8 +4,6 @@ import lightTheme from './themes/Light'
 import axios, { AxiosError } from 'axios'
 import { router } from './routers'
 
-axios.defaults.baseURL = 'http://localhost:8080'
-
 function App() {
   const [messageApi, contextHolder] = message.useMessage()
 
