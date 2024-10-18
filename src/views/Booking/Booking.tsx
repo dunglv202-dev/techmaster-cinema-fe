@@ -4,24 +4,46 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getScheduleDetails } from '@/services/schedule-service'
 import { Seat } from '@/models/seat'
-import { Button, Divider, Image, Space, Typography } from 'antd'
+import { Button, Divider, Image, message, Space, Typography } from 'antd'
 import moment from 'moment'
 import DescriptorMeta from '@/components/DescriptorMeta'
+import { bookTicket } from '@/services/ticket-service'
 
 const Booking = () => {
-  const { id } = useParams()
+  const { id: scheduleId } = useParams()
   const navigate = useNavigate()
   const [details, setDetails] = useState<ScheduleDetails>()
   const [selectedSeats, setSelectedSeats] = useState<Seat[]>([])
   const ticketTotalPrice = selectedSeats.map((s) => s!.price).reduce((acc, sum) => acc + sum, 0)
+  const [submitting, setSubmitting] = useState(false)
+  const [messageApi, contextHolder] = message.useMessage()
 
   useEffect(() => {
-    if (!id) return
-    getScheduleDetails(Number(id)).then(setDetails)
-  }, [id])
+    if (!scheduleId) return
+    getScheduleDetails(Number(scheduleId)).then(setDetails)
+  }, [scheduleId])
+
+  const doBooking = async () => {
+    if (selectedSeats.length === 0) {
+      messageApi.error('Vui lòng chọn ghế ')
+      return
+    }
+    setSubmitting(true)
+    try {
+      const booking = {
+        scheduleId: Number(scheduleId),
+        seats: selectedSeats.map((s) => s!.code),
+      }
+      await bookTicket(booking)
+      navigate('/me/tickets')
+    } finally {
+      setSubmitting(false)
+    }
+  }
 
   return (
     <>
+      {contextHolder}
       <Space>
         <Typography.Title level={2} style={{ fontSize: 16, margin: 0 }}>
           {details?.cinema} | {details?.room} - {moment(details?.start).format('MMM DD, hh:mm A')} ~{' '}
@@ -52,7 +74,12 @@ const Booking = () => {
             label='Tổng tiền'
             content={`${new Intl.NumberFormat().format(ticketTotalPrice)} đ`}
           />
-          <Button type='primary' style={{ width: '100%' }}>
+          <Button
+            type='primary'
+            style={{ width: '100%' }}
+            onClick={doBooking}
+            disabled={submitting}
+          >
             Đặt vé
           </Button>
           <Button type='dashed' style={{ width: '100%' }} onClick={() => navigate('/')}>
