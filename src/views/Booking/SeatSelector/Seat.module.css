@@ -13,6 +13,7 @@
 .seat.small {
   width: 18px;
   height: 18px;
+  cursor: default !important;
 }
 
 .seat:not(.none) {

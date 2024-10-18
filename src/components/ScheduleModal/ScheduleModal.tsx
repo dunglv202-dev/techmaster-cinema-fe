@@ -20,6 +20,9 @@ const ScheduleModal = ({ movieId, visible, onClose }: ScheduleModalProps) => {
   const [schedules, setSchedules] = useState<CinemaSchedule[]>([])
 
   useEffect(() => {
+    console.log('movieId', movieId)
+    console.log('location', location)
+    console.log('date', date)
     if (!movieId || !location || !date) return
     const fetchSchedules = async () => {
       setLoading(true)
