@@ -1,22 +1,19 @@
 import MovieGrid from '@/components/MovieGrid/MovieGrid'
 import { Movie } from '@/models/movie'
-
-const sampleMovie: Movie = {
-  id: 1,
-  name: 'Parasite',
-  thumbnail:
-    'https://m.media-amazon.com/images/M/MV5BYjk1Y2U4MjQtY2ZiNS00OWQyLWI3MmYtZWUwNmRjYWRiNWNhXkEyXkFqcGc@._V1_.jpg',
-  categories: ['Tâm lý', 'Tình cảm'],
-  durationInMinutes: 120,
-  premiereDate: '2024-10-16',
-}
+import { getMovies } from '@/services/movie-service'
+import { useEffect, useState } from 'react'
 
 const HomePage = () => {
-  return (
-    <MovieGrid
-      movies={[sampleMovie, sampleMovie, sampleMovie, sampleMovie, sampleMovie, sampleMovie]}
-    />
-  )
+  const [movies, setMovies] = useState<Movie[]>([])
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      setMovies((await getMovies()).content)
+    }
+    fetchMovies()
+  }, [])
+
+  return <MovieGrid movies={movies} />
 }
 
 export default HomePage
