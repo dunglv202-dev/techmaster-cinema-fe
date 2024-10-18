@@ -6,7 +6,7 @@ const DefaultLayout = () => {
   return (
     <>
       <PageHeader />
-      <main style={{ maxWidth: 'var(--app-max-width)', margin: '0 auto' }}>
+      <main style={{ maxWidth: 'var(--app-max-width)', margin: '20px auto' }}>
         <Outlet />
       </main>
       <PageFooter />

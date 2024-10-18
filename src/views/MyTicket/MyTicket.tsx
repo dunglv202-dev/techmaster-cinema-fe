@@ -18,7 +18,9 @@ const MyTicket = () => {
 
   return (
     <>
-      <Typography.Title level={3}>Vé của tôi</Typography.Title>
+      <Typography.Title level={2} style={{ fontSize: 19 }}>
+        Vé của tôi
+      </Typography.Title>
       <Space direction='vertical' style={{ display: 'flex' }}>
         {bookings.map((booking) => (
           <TicketBooking key={booking.id} booking={booking} onExpired={fetchBookings} />

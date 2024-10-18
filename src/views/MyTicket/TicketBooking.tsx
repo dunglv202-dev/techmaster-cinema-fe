@@ -13,7 +13,7 @@ const TicketBooking = ({ booking, onExpired }: TicketBookingProps) => {
   return (
     <Card>
       <div style={{ display: 'flex', gap: 15 }}>
-        <Image src={booking.movie.thumbnail} alt={booking.movie.name} width={100} preview={false} />
+        <Image src={booking.movie.thumbnail} alt={booking.movie.name} width={120} preview={false} />
         <Card.Meta
           style={{ flexGrow: 1 }}
           title={booking.movie.name}

@@ -23,13 +23,13 @@ const MovieCard = ({ movie }: MovieCardProp) => {
       <Space direction='vertical'>
         <Link to={`/movies/${movie.id}`}>
           <Typography.Text
-            style={{ fontWeight: 'bold', fontSize: 16, margin: 0, marginBottom: 10 }}
+            style={{ fontWeight: 'bold', fontSize: 14, margin: 0, marginBottom: 10 }}
           >
             {movie.name.toUpperCase()}
           </Typography.Text>
         </Link>
-        <DescriptorMeta label='Thể loại' content={movie.categories.join(', ')} />
-        <DescriptorMeta label='Thời lượng' content={`${movie.durationInMinutes} phút`} />
+        <DescriptorMeta size={13} label='Thể loại' content={movie.categories.join(', ')} />
+        <DescriptorMeta size={13} label='Thời lượng' content={`${movie.durationInMinutes} phút`} />
       </Space>
     </Card>
   )
