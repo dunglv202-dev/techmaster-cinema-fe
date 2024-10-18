@@ -19,6 +19,10 @@ const Timer = ({ deadline, onExpired }: TimerProps) => {
   }, [deadline])
 
   useEffect(() => {
+    setTimeLeft(calculateTimeLeft())
+  }, [calculateTimeLeft])
+
+  useEffect(() => {
     const timer = setInterval(() => {
       const left = calculateTimeLeft()
       // check if expired
