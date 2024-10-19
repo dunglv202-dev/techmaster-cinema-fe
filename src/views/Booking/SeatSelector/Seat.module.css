@@ -7,7 +7,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
+  font-size: 11px;
+  color: #444;
+  user-select: none;
 }
 
 .seat.small {
@@ -21,11 +23,11 @@
 }
 
 .seat.standard {
-  border-color: var(--app-color-primary);
+  border-color: var(--app-color-primary-light);
 }
 
 .seat.vip {
-  border-color: var(--app-color-secondary);
+  border-color: var(--app-color-secondary-light);
 }
 
 .seat.occupied,

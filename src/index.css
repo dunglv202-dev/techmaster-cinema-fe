@@ -6,6 +6,8 @@
   --app-max-width: 1024px;
   --app-color-primary: #4e74ff;
   --app-color-secondary: #ed1d1c;
+  --app-color-primary-light: #a3b7ff;
+  --app-color-secondary-light: #ff8e8e;
 }
 
 body {
