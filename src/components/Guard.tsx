@@ -11,7 +11,6 @@ const Guard = ({ children }: GuardProps) => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    console.log(authContext.user)
     if (!authContext.user) {
       navigate('/login')
     }

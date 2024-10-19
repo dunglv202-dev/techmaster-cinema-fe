@@ -14,3 +14,8 @@ export const getMyBookings = async () => {
 export const cancelBooking = async (id: number) => {
   await axios.post(`/api/bookings/${id}/cancel`)
 }
+
+export const getPaymentUrl = async (id: number) => {
+  const resp = await axios.get<string>(`/api/bookings/${id}/pay`)
+  return resp.data
+}

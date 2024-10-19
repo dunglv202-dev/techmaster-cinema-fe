@@ -36,7 +36,7 @@ const HomePage = () => {
       </section>
       <section>
         <Divider>
-          <Typography.Title level={2} style={{ fontSize: 17 }}>
+          <Typography.Title level={2} style={{ fontSize: 17, color: 'var(--app-color-primary)' }}>
             Phim đang chiếu
           </Typography.Title>
         </Divider>
@@ -44,7 +44,7 @@ const HomePage = () => {
       </section>
       <section>
         <Divider>
-          <Typography.Title level={2} style={{ fontSize: 17 }}>
+          <Typography.Title level={2} style={{ fontSize: 17, color: 'var(--app-color-primary)' }}>
             Phim sắp chiếu
           </Typography.Title>
         </Divider>

@@ -1,7 +1,7 @@
 import DescriptorMeta from '@/components/DescriptorMeta'
 import Timer from '@/components/Timer/Timer'
 import { Booking } from '@/models/booking'
-import { cancelBooking } from '@/services/booking-service'
+import { cancelBooking, getPaymentUrl } from '@/services/booking-service'
 import { Button, Card, Image, Space, Tag, Typography } from 'antd'
 import moment from 'moment'
 
@@ -53,7 +53,10 @@ const TicketBooking = ({ booking, onExpired, onCancel }: TicketBookingProps) => 
                 <Timer deadline={booking.paymentDeadline} onExpired={onExpired} />
               </Typography.Text>
             </div>
-            <Button href={`/api/bookings/${booking.id}/pay`} type='primary'>
+            <Button
+              type='primary'
+              onClick={async () => (location.href = await getPaymentUrl(booking.id))}
+            >
               Thanh toán ngay
             </Button>
             <Button style={{ width: '100%' }} type='dashed' onClick={doCancel}>
