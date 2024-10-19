@@ -5,6 +5,8 @@ import MovieDetails from '@/views/Detail/MovieDetails'
 import HomePage from '@/views/Home/Home'
 import Login from '@/views/Login/Login'
 import Logout from '@/views/Logout/Logout'
+import ComingSoon from '@/views/Movies/ComingSoon/ComingSoon'
+import NowShowing from '@/views/Movies/NowShowing/NowShowing'
 import MyTicket from '@/views/MyTicket/MyTicket'
 import Register from '@/views/Register/Register'
 import { createBrowserRouter } from 'react-router-dom'
@@ -26,12 +28,24 @@ export const router = createBrowserRouter([
         element: <Register />,
       },
       {
+        path: '/movies/now-showing',
+        element: <NowShowing />,
+      },
+      {
+        path: '/movies/coming-soon',
+        element: <ComingSoon />,
+      },
+      {
         path: '/movies/:id',
         element: <MovieDetails />,
       },
       {
         path: '/booking/:id',
-        element: <Booking />,
+        element: (
+          <Guard>
+            <Booking />
+          </Guard>
+        ),
       },
       {
         path: '/me/tickets',
