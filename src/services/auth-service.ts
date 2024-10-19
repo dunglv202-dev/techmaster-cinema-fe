@@ -8,3 +8,7 @@ export const login = async (credentials: Credentials) => {
 export const register = async (info: RegistrationInfo) => {
   await axios.post('/api/auth/register', info)
 }
+
+export const logout = async () => {
+  await axios.post('/api/auth/logout')
+}

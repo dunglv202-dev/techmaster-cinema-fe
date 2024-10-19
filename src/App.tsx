@@ -4,6 +4,7 @@ import lightTheme from './themes/Light'
 import axios, { AxiosError, AxiosRequestConfig } from 'axios'
 import { router } from './routers'
 import { ApiResp } from './models/common'
+import { AuthContextProvider } from './context/AuthContext'
 
 const isTokenExpired = (resp: ApiResp<unknown>) => {
   return resp.code === 401 && resp.message === '{jwt.expired}'
@@ -35,7 +36,9 @@ function App() {
   return (
     <ConfigProvider theme={lightTheme}>
       {contextHolder}
-      <RouterProvider router={router} />
+      <AuthContextProvider>
+        <RouterProvider router={router} />
+      </AuthContextProvider>
     </ConfigProvider>
   )
 }

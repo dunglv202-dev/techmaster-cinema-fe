@@ -1,7 +1,9 @@
 import CGVLogo from '@/assets/cgvlogo.png'
 import BuyNow from '@/assets/mua_ve_ngay.png'
-import { IconTicket, IconUser } from '@tabler/icons-react'
-import { Flex, Menu, MenuProps } from 'antd'
+import AuthContext from '@/context/AuthContext'
+import { IconLogout, IconTicket, IconUser } from '@tabler/icons-react'
+import { Flex, Menu, MenuProps, Space, Typography } from 'antd'
+import { useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import HeaderLink from './HeaderLink'
 
@@ -47,6 +49,7 @@ const makeMenuItem = (item: MenuItem): Required<MenuProps>['items'][number] => {
 const items = navItems.map(makeMenuItem)
 
 const PageHeader = () => {
+  const authContext = useContext(AuthContext)
   const location = useLocation()
   const activeMenu = navItems
     .map((item) => item.path)
@@ -54,9 +57,18 @@ const PageHeader = () => {
 
   return (
     <header style={{ maxWidth: 'var(--app-max-width)', margin: '0 auto' }}>
-      <Flex justify='flex-end' gap={20} style={{ paddingTop: 20 }}>
+      <Flex justify='flex-end' align='center' gap={20} style={{ paddingTop: 20 }}>
         <HeaderLink to='/me/tickets' label='Vé của tôi' icon={<IconTicket size={18} />} />
-        <HeaderLink to='/login' label='Đăng nhập' icon={<IconUser size={18} />} />
+        {authContext.user ? (
+          <Space style={{ gap: 20 }}>
+            <HeaderLink to='/logout' label='Đăng xuất' icon={<IconLogout size={18} />} />
+            <Typography.Text style={{ fontSize: 14 }}>
+              Xin chào, {[authContext.user.firstName, authContext.user.lastName].join(' ')}
+            </Typography.Text>
+          </Space>
+        ) : (
+          <HeaderLink to='/login' label='Đăng nhập' icon={<IconUser size={18} />} />
+        )}
       </Flex>
       <Flex gap={20} align='center' style={{ paddingBlock: 30 }}>
         <Link to='/'>

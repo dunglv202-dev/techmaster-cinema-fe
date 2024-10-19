@@ -1,8 +1,10 @@
+import Guard from '@/components/Guard'
 import DefaultLayout from '@/layouts/DefaultLayout'
 import Booking from '@/views/Booking/Booking'
 import MovieDetails from '@/views/Detail/MovieDetails'
 import HomePage from '@/views/Home/Home'
 import Login from '@/views/Login/Login'
+import Logout from '@/views/Logout/Logout'
 import MyTicket from '@/views/MyTicket/MyTicket'
 import Register from '@/views/Register/Register'
 import { createBrowserRouter } from 'react-router-dom'
@@ -33,8 +35,16 @@ export const router = createBrowserRouter([
       },
       {
         path: '/me/tickets',
-        element: <MyTicket />,
+        element: (
+          <Guard>
+            <MyTicket />
+          </Guard>
+        ),
       },
     ],
+  },
+  {
+    path: '/logout',
+    element: <Logout />,
   },
 ])

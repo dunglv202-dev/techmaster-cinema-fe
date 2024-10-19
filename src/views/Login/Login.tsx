@@ -1,11 +1,12 @@
+import AuthContext from '@/context/AuthContext'
 import { Credentials } from '@/models/auth'
-import { login } from '@/services/auth-service'
 import { IconLock, IconUser } from '@tabler/icons-react'
 import { Button, Checkbox, Divider, Flex, Form, Input, Typography } from 'antd'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
+  const authContext = useContext(AuthContext)
   const navigate = useNavigate()
   const [form] = Form.useForm<Credentials>()
   const [submitting, setSubmitting] = useState(false)
@@ -14,7 +15,7 @@ const Login = () => {
     try {
       setSubmitting(true)
       await form.validateFields()
-      await login(form.getFieldsValue())
+      await authContext.login(form.getFieldsValue())
       navigate('/me/tickets')
     } finally {
       setSubmitting(false)
