@@ -26,7 +26,7 @@ function App() {
         } catch (err) {
           return Promise.reject(err)
         }
-      } else {
+      } else if (!error.config?.fetchOptions?.selfErrHandling) {
         messageApi.error(error.response?.data.message || error.message)
       }
       return Promise.reject(error)

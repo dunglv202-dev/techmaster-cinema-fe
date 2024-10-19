@@ -8,14 +8,13 @@ import { Link, useLocation } from 'react-router-dom'
 import HeaderLink from './HeaderLink'
 
 interface MenuItem {
-  path: string
+  path?: string
   label: string
   children?: MenuItem[]
 }
 
 const navItems: MenuItem[] = [
   {
-    path: '/movies',
     label: 'Phim',
     children: [
       {
@@ -40,8 +39,8 @@ const navItems: MenuItem[] = [
 
 const makeMenuItem = (item: MenuItem): Required<MenuProps>['items'][number] => {
   return {
-    key: item.path,
-    label: <Link to={item.path}>{item.label}</Link>,
+    key: item.path || item.label,
+    label: item.path ? <Link to={item.path}>{item.label}</Link> : <span>{item.label}</span>,
     children: item.children?.map(makeMenuItem),
   }
 }
@@ -53,7 +52,7 @@ const PageHeader = () => {
   const location = useLocation()
   const activeMenu = navItems
     .map((item) => item.path)
-    .find((key) => location.pathname.startsWith(key))
+    .find((key) => key && location.pathname.startsWith(key))
 
   return (
     <header style={{ maxWidth: 'var(--app-max-width)', margin: '0 auto' }}>
