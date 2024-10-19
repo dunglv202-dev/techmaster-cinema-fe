@@ -23,7 +23,12 @@ const MyTicket = () => {
       </Typography.Title>
       <Space direction='vertical' style={{ display: 'flex' }}>
         {bookings.map((booking) => (
-          <TicketBooking key={booking.id} booking={booking} onExpired={fetchBookings} />
+          <TicketBooking
+            key={booking.id}
+            booking={booking}
+            onExpired={fetchBookings}
+            onCancel={fetchBookings}
+          />
         ))}
       </Space>
     </>

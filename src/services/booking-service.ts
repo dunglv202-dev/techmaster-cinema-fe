@@ -10,3 +10,7 @@ export const getMyBookings = async () => {
   const resp = await axios.get<ResultPage<Booking>>('/api/bookings')
   return resp.data
 }
+
+export const cancelBooking = async (id: number) => {
+  await axios.post(`/api/bookings/${id}/cancel`)
+}

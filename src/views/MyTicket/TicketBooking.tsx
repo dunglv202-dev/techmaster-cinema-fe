@@ -1,15 +1,22 @@
 import DescriptorMeta from '@/components/DescriptorMeta'
 import Timer from '@/components/Timer/Timer'
 import { Booking } from '@/models/booking'
+import { cancelBooking } from '@/services/booking-service'
 import { Button, Card, Image, Space, Tag, Typography } from 'antd'
 import moment from 'moment'
 
 interface TicketBookingProps {
   booking: Booking
   onExpired: () => void
+  onCancel: () => void
 }
 
-const TicketBooking = ({ booking, onExpired }: TicketBookingProps) => {
+const TicketBooking = ({ booking, onExpired, onCancel }: TicketBookingProps) => {
+  const doCancel = async () => {
+    await cancelBooking(booking.id)
+    onCancel()
+  }
+
   return (
     <Card>
       <div style={{ display: 'flex', gap: 15 }}>
@@ -49,7 +56,7 @@ const TicketBooking = ({ booking, onExpired }: TicketBookingProps) => {
             <Button href={`/api/bookings/${booking.id}/pay`} type='primary'>
               Thanh toán ngay
             </Button>
-            <Button style={{ width: '100%' }} type='dashed'>
+            <Button style={{ width: '100%' }} type='dashed' onClick={doCancel}>
               Hủy
             </Button>
           </Space>
