@@ -50,8 +50,11 @@ const MovieDetails = () => {
         <Typography.Paragraph>{movie?.description}</Typography.Paragraph>
         {movie?.trailer && (
           <iframe
-            style={{ width: '100%', border: 'none', height: 500 }}
+            style={{ width: '100%', border: 'none', height: 514 }}
             src={movie.trailer}
+            referrerPolicy='strict-origin-when-cross-origin'
+            allowFullScreen
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
           ></iframe>
         )}
       </Space>

@@ -45,13 +45,13 @@ const SeatSelector = ({ seats, onChange }: SeatSelectorProps) => {
       </div>
       <Space direction='vertical' style={{ display: 'flex', alignItems: 'center', marginTop: 20 }}>
         <Space>
-          <SeatDescriptor label='Standard' type='STANDARD' />
+          <SeatDescriptor label='Tiêu chuẩn' type='STANDARD' />
           <SeatDescriptor label='VIP' type='VIP' />
         </Space>
         <Space>
-          <SeatDescriptor label='Occupied' type='OCCUPIED' />
-          <SeatDescriptor label='Not Available' type='NOT_AVAILABLE' />
-          <SeatDescriptor label='Selected' type='SELECTED' />
+          <SeatDescriptor label='Không thể chọn' type='OCCUPIED' />
+          <SeatDescriptor label='Không khả dụng' type='NOT_AVAILABLE' />
+          <SeatDescriptor label='Đã chọn' type='SELECTED' />
         </Space>
       </Space>
     </div>
