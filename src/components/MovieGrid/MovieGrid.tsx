@@ -1,5 +1,5 @@
 import { Movie } from '@/models/movie'
-import { Col, Row } from 'antd'
+import { Col, Empty, Row } from 'antd'
 import MovieCard from './MovieCard'
 
 interface MovieGridProp {
@@ -7,14 +7,16 @@ interface MovieGridProp {
 }
 
 const MovieGrid = ({ movies }: MovieGridProp) => {
-  return (
+  return movies.length > 0 ? (
     <Row gutter={20}>
       {movies.map((movie) => (
-        <Col style={{ marginTop: 20 }} span={6} key={movie.id}>
+        <Col style={{ marginBottom: 20 }} span={6} key={movie.id}>
           <MovieCard movie={movie} />
         </Col>
       ))}
     </Row>
+  ) : (
+    <Empty imageStyle={{ height: 64 }} />
   )
 }
 

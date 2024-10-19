@@ -19,3 +19,9 @@ export interface DetailMovie {
   actors?: string[]
   liked: boolean
 }
+
+export interface MovieFilter {
+  category?: string
+  nowShowing?: boolean
+  comingSoon?: boolean
+}

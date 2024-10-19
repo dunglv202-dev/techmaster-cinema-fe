@@ -1,0 +1,35 @@
+.cate_card {
+  height: 90px;
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cate__name {
+  font-size: 16px;
+  margin: 0;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: white;
+}
+
+.cate__thumb-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.cate__thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+.cate_card:hover .cate__thumb {
+  filter: brightness(40%) blur(1px);
+}

@@ -63,7 +63,10 @@ const PageHeader = () => {
           <Space style={{ gap: 20 }}>
             <HeaderLink to='/logout' label='Đăng xuất' icon={<IconLogout size={18} />} />
             <Typography.Text style={{ fontSize: 14 }}>
-              Xin chào, {[authContext.user.firstName, authContext.user.lastName].join(' ')}
+              Chào,{' '}
+              <span style={{ fontWeight: 'bold', color: 'var(--app-color-primary)' }}>
+                {[authContext.user.firstName, authContext.user.lastName].join(' ')}
+              </span>
             </Typography.Text>
           </Space>
         ) : (

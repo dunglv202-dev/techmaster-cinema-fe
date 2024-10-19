@@ -10,10 +10,16 @@ interface MovieCardProp {
 const MovieCard = ({ movie }: MovieCardProp) => {
   return (
     <Card
+      styles={{
+        body: {
+          paddingBlock: 15,
+          paddingInline: 20,
+        },
+      }}
       cover={
         <Link to={`/movies/${movie.id}`}>
           <img
-            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+            style={{ objectFit: 'cover', width: '100%', height: '100%', maxHeight: 220 }}
             src={movie.thumbnail}
             alt={movie.name}
           />
