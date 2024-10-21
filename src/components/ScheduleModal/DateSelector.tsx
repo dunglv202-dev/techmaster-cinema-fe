@@ -21,7 +21,7 @@ const DateSelector = ({ onSelect }: DateSelectorProps) => {
   useEffect(() => {
     const fetchDates = async () => {
       const today = moment().startOf('day')
-      const dates = Array.from({ length: 24 }, (_, i) => today.add(i, 'days').toDate())
+      const dates = Array.from({ length: 24 }, (_, i) => today.clone().add(i, 'days').toDate())
       setDates(dates)
       selectDate(dates[0])
     }
